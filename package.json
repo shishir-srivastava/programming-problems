@@ -1,0 +1,25 @@
+{
+  "name": "programming-problems",
+  "version": "1.0.0",
+  "description": "A collection of programming problems and their solutions, along with implementations of data structures and algorithms.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shishir-srivastava/programming-problems.git"
+  },
+  "keywords": [
+    "data",
+    "structures",
+    "algorithms",
+    "programming"
+  ],
+  "author": "Shishir Srivastava <mail@shishir.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shishir-srivastava/programming-problems/issues"
+  },
+  "homepage": "https://github.com/shishir-srivastava/programming-problems#readme"
+}
