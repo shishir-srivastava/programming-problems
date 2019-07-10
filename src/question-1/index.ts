@@ -7,7 +7,7 @@
  * @param k         The number which the two numbers from the given array must sum up to
  *
  * Assumptions: All numbers are positive integers
- * Tags: #easy #google #recursion
+ * Tags: #easy #google #recursion #dynamic-programming
  */
 
 export const solution1 = (list: ReadonlyArray<number>, k: number): boolean => {
