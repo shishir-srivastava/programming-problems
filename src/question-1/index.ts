@@ -10,7 +10,7 @@
  * Tags: #easy #google #recursion
  */
 
-const solution = (list: ReadonlyArray<number>, k: number): boolean => {
+export const solution1 = (list: ReadonlyArray<number>, k: number): boolean => {
     if (list.length === 0) {
         return false;
     }
@@ -22,10 +22,43 @@ const solution = (list: ReadonlyArray<number>, k: number): boolean => {
     if (k === firstNumber) {
         return true;
     } else if (firstNumber < k) {
-        return solution(rest, k - firstNumber) || solution(rest, k);
+        return solution1(rest, k - firstNumber) || solution1(rest, k);
     } else {
-        return solution(rest, k);
+        return solution1(rest, k);
     }
 };
 
-export default solution;
+export const solution2 = (list: ReadonlyArray<number>, k: number): boolean => {
+    const totalListLength = list.length;
+
+    // Create a two dimensional array
+    // (k + 1) rows indicate possible sum of 0 to k
+    // (list.length + 1) cols indicate possible length of subset of list
+    const arr = new Array<boolean[]>(k + 1);
+    for (let i = 0; i < k + 1; i++) {
+        arr[i] = new Array<boolean>(totalListLength + 1);
+    }
+
+    // Set initial values.
+    // If subset length is 0, then the answer is false.
+    // If expected sum is 0, then the answer is true.
+    for (let i = 0; i < k + 1; i++) {
+        arr[i][0] = false;
+    }
+
+    for (let i = 1; i < totalListLength + 1; i++) {
+        arr[0][i] = true;
+    }
+
+    for (let n = 1; n < totalListLength + 1; n++) {
+        for (let sum = 1; sum < k + 1; sum++) {
+            if (sum >= list[n - 1]) {
+                arr[sum][n] = arr[sum - list[n - 1]][n - 1] || arr[sum][n - 1];
+            } else {
+                arr[sum][n] = arr[sum][n - 1];
+            }
+        }
+    }
+
+    return arr[k][totalListLength];
+};
